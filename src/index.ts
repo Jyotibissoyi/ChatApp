@@ -26,19 +26,9 @@ async function bootstrap(): Promise<void> {
 
   // 3. Start Express server
   const app = createApp();
-  const server = app.listen(config.port, () => {
+  const server = app.listen(process.env.PORT, () => {
     console.log(`===============================================`);
-    console.log(` Chat Backend is running on http://localhost:${config.port}`);
-    console.log(` Database: PostgreSQL`);
-    console.log(` Endpoints:`);
-    console.log(`   POST /chat/create`);
-    console.log(`   POST /chat/:chatId/message/send`);
-    console.log(`   GET  /chat/:chatId/messages?limit=50`);
-    console.log(`   POST /chat/:chatId/message/:messageId/read`);
-    console.log(`   POST /chat/:chatId/lastseen`);
-    console.log(`   GET  /user/:userId/chats`);
-    console.log(`===============================================`);
-  });
+    console.log(` Chat Backend is running on http://localhost:${process.env.PORT}`);  });
 
   // Graceful shutdown handling
   const shutdown = () => {
